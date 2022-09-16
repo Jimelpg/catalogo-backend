@@ -1,0 +1,14 @@
+Obtener una tarea
+---
+tags:
+- "task"
+responses:
+  200:
+    description: Se trajo correctamente el registro
+  401:
+    description: Las credenciales proveidas en los datos de login son inválidas
+parameters:
+  - name: id
+    in: path
+    required: false
+  
