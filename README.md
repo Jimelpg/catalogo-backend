@@ -5,11 +5,13 @@ git clone <URL del repositorio>
 python -m venv venv
 
 #activar el venv
+Windows
 venv\Scripts\activate
+
+Mac
+source venv/bin/activate
 
 #descargar las dependecias
-venv\Scripts\activate
-
 pip install -r requirements.txt
 
 #correr el proyecto
