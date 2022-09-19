@@ -1,0 +1,13 @@
+Lista de Productos
+---
+tags:
+- "producto"
+responses:
+  200:
+    description: Se obtiene la lista de Productos
+parameters:
+  - name: page
+    in: query
+    default: 1
+    description: Productos actuales de la pagina
+  
