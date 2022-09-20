@@ -38,5 +38,5 @@ definitions:
       proveedor_id: 1
       descrip: "El sabado me tinho"
       nombre: "bla bla"
-      precio: "bla bla"
+      precio: 2500
       estado: "bla"
