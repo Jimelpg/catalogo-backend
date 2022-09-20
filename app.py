@@ -60,7 +60,7 @@ api.add_resource (Producto, f'{PREFIX}/productos/<id>') #definicion de un recurs
 api.add_resource (ProductoList, f'{PREFIX}/productos') #definicion de un recurso
 api.add_resource (ProductoSearch, f'{PREFIX}/search/productos')
 api.add_resource (CategoriaList, f'{PREFIX}/categoria')
-#AGREGAR DE PROVEEDORES
+
 
 
 # Bloque opcional para ejecutr con python app.py

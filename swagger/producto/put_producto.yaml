@@ -18,22 +18,9 @@ parameters:
 definitions:
   Productoput:
     type: "object"
-    propierties:
+    properties:
       id:
         type: "int64"
-      proveedor_id: 
-        type: "int64"
-      categoria_id: 
-        type: "int64"
-      descrip:
-        type: "string"
-      nombre:
-        type: "string"
-      precio:
-        type: "int64"
-      estado: 
-        type: "string"
-
     example:
       id: 2
       categoria_id: 1
