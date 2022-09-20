@@ -1,5 +1,6 @@
 from flask import Flask, redirect
 from distutils.sysconfig import PREFIX
+from resources.proveedor import ProveedorList
 from resources.task import Task, TaskList, TaskSearch
 from flask_restful import Api
 from flasgger import Swagger 
@@ -56,6 +57,7 @@ def welcome():
 api.add_resource (Task, f'{PREFIX}/tasks/<id>') #definicion de un recurso
 api.add_resource (TaskList, f'{PREFIX}/tasks') #definicion de un recurso
 api.add_resource (TaskSearch, f'{PREFIX}/search/tasks')
+api.add_resource (ProveedorList, f'{PREFIX}/proveedores') #definicion de un recurso
 
 # Bloque opcional para ejecutr con python app.py
 if __name__ =='__main__':
