@@ -1,5 +1,6 @@
 from flask import Flask, redirect
 from distutils.sysconfig import PREFIX
+from resources.proveedor import ProveedorList
 from resources.producto import Producto, ProductoList, ProductoSearch
 from resources.categoria import CategoriaList
 from flask_restful import Api
@@ -54,6 +55,7 @@ def welcome():
     return redirect(f"{PREFIX}/apidocs", code=302)
 
 #los recursos siemrpe se nombran en plural "task" a "tasks"
+api.add_resource (ProveedorList, f'{PREFIX}/proveedores') #definicion de un recurso
 api.add_resource (Producto, f'{PREFIX}/productos/<id>') #definicion de un recurso
 api.add_resource (ProductoList, f'{PREFIX}/productos') #definicion de un recurso
 api.add_resource (ProductoSearch, f'{PREFIX}/search/productos')
