@@ -1,12 +1,10 @@
-Obtener una tarea
+Borrar un Producto
 ---
 tags:
-- "task"
+- "producto"
 responses:
   200:
     description: Se borro correctamente el registro
-  401:
-    description: Las credenciales proveidas en los datos de login son inválidas
 parameters:
   - name: id
     in: path

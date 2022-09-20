@@ -1,7 +1,7 @@
 from flask import Flask, redirect
 from distutils.sysconfig import PREFIX
 from resources.proveedor import ProveedorList
-from resources.task import Task, TaskList, TaskSearch
+from resources.producto import Producto, ProductoList, ProductoSearch
 from flask_restful import Api
 from flasgger import Swagger 
 import os 
@@ -18,9 +18,9 @@ PREFIX = os.environ.get('PREFIX_PATH' , '/api')
 
 #Swagger configuración
 app.config['SWAGGER'] = {
-    'title': 'todo-backend',
+    'title': 'catalogo-backend',
     'version': '1.0.0',
-    'description': 'API de servicios REST en Flask / Jimena',
+    'description': 'API de servicios REST en Flask / Catalogo',
     'uiversion': 2,
     'tags': [{'name': 'jwt'}],
     'specs': [{
@@ -39,7 +39,7 @@ def env_config(name, default):
     app.config[name] = os.environ.get(name, default=default)
 
 #Database configuracion
-env_config('SQLALCHEMY_DATABASE_URI','postgresql://postgres:notevoyadecir0@localhost:5432/todo')
+env_config('SQLALCHEMY_DATABASE_URI','postgresql://postgres:notevoyadecir0@localhost:5432/catalogo') #CAMBIAR OTROS
 
 #SQL ALCHEMY CONFIG
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -54,10 +54,10 @@ def welcome():
     return redirect(f"{PREFIX}/apidocs", code=302)
 
 #los recursos siemrpe se nombran en plural "task" a "tasks"
-api.add_resource (Task, f'{PREFIX}/tasks/<id>') #definicion de un recurso
-api.add_resource (TaskList, f'{PREFIX}/tasks') #definicion de un recurso
-api.add_resource (TaskSearch, f'{PREFIX}/search/tasks')
 api.add_resource (ProveedorList, f'{PREFIX}/proveedores') #definicion de un recurso
+api.add_resource (Producto, f'{PREFIX}/productos/<id>') #definicion de un recurso
+api.add_resource (ProductoList, f'{PREFIX}/productos') #definicion de un recurso
+api.add_resource (ProductoSearch, f'{PREFIX}/search/productos')
 
 # Bloque opcional para ejecutr con python app.py
 if __name__ =='__main__':

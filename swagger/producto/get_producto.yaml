@@ -1,0 +1,12 @@
+Obtener una producto
+---
+tags:
+- "task"
+responses:
+  200:
+    description: Se trajo correctamente el producto
+parameters:
+  - name: id
+    in: path
+    required: false
+  
