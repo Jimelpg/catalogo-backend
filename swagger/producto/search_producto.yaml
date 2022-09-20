@@ -15,7 +15,7 @@ parameters:
     schema:
       $ref: "#/definitions/ProductoSearch"
 definitions:
-  ProdcutoSearch:
+  ProductoSearch:
     type: "object"
     propierties:
       id:
