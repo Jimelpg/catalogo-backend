@@ -31,7 +31,6 @@ definitions:
       estado: 
         type: "string"
     example:
-      id: 2
       categoria_id: 1
       proveedor_id: 1
       descrip: "El sabado me tinho"
