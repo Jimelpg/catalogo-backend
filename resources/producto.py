@@ -12,6 +12,7 @@ from models.producto import ProductoModel
 from flasgger import swag_from
 from utils import paginated_results,restrict
 from flask import request
+from sqlalchemy import func
 
 
 class Producto (Resource):
@@ -40,7 +41,7 @@ class Producto (Resource):
     def put(self, id):
         producto = ProductoModel.find_by_id(id)
         if producto:
-            newdata = producto.parser.parse_args()
+            newdata = Producto.parser.parse_args()
             producto.from_reqparse(newdata)
             producto.save_to_db()
             return producto.json()
@@ -86,12 +87,12 @@ class ProductoSearch(Resource):
         if request.json:
             filtros = request.json
             query = restrict(query,filtros, 'id', lambda x: ProductoModel.id == x)
-            query = restrict(query,filtros, 'proveedor_id', lambda x: ProductoModel.descrip.contains(x))
-            query = restrict(query,filtros, 'categoria_id', lambda x: ProductoModel.id == x)
-            query = restrict(query,filtros, 'nombre', lambda x: ProductoModel.descrip.contains(x))
-            query = restrict(query,filtros, 'descrip', lambda x: ProductoModel.id == x)
-            query = restrict(query,filtros, 'precio', lambda x: ProductoModel.descrip.contains(x))
-            query = restrict(query,filtros, 'estado', lambda x: ProductoModel.id == x)
+            query = restrict(query,filtros, 'proveedor_id', lambda x: ProductoModel.proveedor_id == x)
+            query = restrict(query,filtros, 'categoria_id', lambda x: ProductoModel.categoria_id == x)
+            query = restrict(query,filtros, 'nombre', lambda x: func.lower(ProductoModel.nombre).contains(x.lower()))
+            query = restrict(query,filtros, 'descrip', lambda x: func.lower(ProductoModel.descrip).contains(x.lower()))
+            query = restrict(query,filtros, 'precio', lambda x: ProductoModel.precio == x)
+            query = restrict(query,filtros, 'estado', lambda x:func.lower(ProductoModel.estado).contains (x.lower()))
             # logica de filtrado de datos
         return paginated_results(query)
 
