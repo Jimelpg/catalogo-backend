@@ -6,6 +6,7 @@ from resources.categoria import CategoriaList
 from flask_restful import Api
 from flasgger import Swagger 
 import os 
+from flask_cors import CORS
 
 from db import db
 
@@ -48,6 +49,8 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['SQLALCHEMY_ECHO'] = False
 
 
+#enable CORS
+CORS (app, resources={r'/*':{'origins': '*'}})
 
 @app.route('/')
 @app.route(f'{PREFIX}')
@@ -59,7 +62,7 @@ api.add_resource (ProveedorList, f'{PREFIX}/proveedores') #definicion de un recu
 api.add_resource (Producto, f'{PREFIX}/productos/<id>') #definicion de un recurso
 api.add_resource (ProductoList, f'{PREFIX}/productos') #definicion de un recurso
 api.add_resource (ProductoSearch, f'{PREFIX}/search/productos')
-api.add_resource (CategoriaList, f'{PREFIX}/categoria')
+api.add_resource (CategoriaList, f'{PREFIX}/categorias')
 
 
 
